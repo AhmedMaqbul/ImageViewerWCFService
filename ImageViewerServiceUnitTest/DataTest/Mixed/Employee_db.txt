@@ -1,0 +1,39 @@
+create database EmployeeDetails
+use EmployeeDetails
+create table UserDetails
+(
+ UserId int identity(1,1) primary key,
+ UserName varchar(50),
+ UserPassword varchar(50)
+)
+
+create table Gender
+(
+ GenderId int identity(1,1) primary key,
+ GenderName varchar(20)
+)
+
+insert into Gender(GenderName) values('Male'),('Female'),('Others')
+
+create table City
+(
+ CityId int identity(1,1) primary key,
+ CityName varchar(50)
+)
+
+insert into City(CityName) values('Kolkata'),('Bengalore'),('Delhi'),('Pune'),('Noida')
+
+Create table EmployeeTable
+(
+EmpID int identity(1,1) primary key,
+EmpName varchar(70),
+EmpPhone bigint,
+EmpEmail varchar(30),
+EmpAddress varchar(200),
+EmpGenderID int foreign key references Gender(GenderId),
+EmpCityID int foreign key references City(CityId),
+EmpDOB date,
+EmpPolicy bit
+)
+
+select* from EmployeeTable
